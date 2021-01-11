@@ -89,6 +89,9 @@ public class AddPostAct extends AppCompatActivity {
     String filepath = "";
 
     Uri image_rui = null;
+    
+    
+    byte[] compressedImage;
 
     //progres dialog
     ProgressDialog pd;
@@ -109,6 +112,10 @@ public class AddPostAct extends AppCompatActivity {
         cameraPermissions = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+
+
+        //request permission biar cepat mas
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 10);
 
         pd = new ProgressDialog(this);
 
@@ -166,19 +173,21 @@ public class AddPostAct extends AppCompatActivity {
                     Toast.makeText(AddPostAct.this, "Enter description...", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                
+                uploadData(description);
 
 
-                if (image_rui==null){
-                    //post without image
-                    uploadData(description, "noImage");
-                }else{
-                    uploadData(description, String.valueOf(image_rui));
-                }
+                // if (image_rui==null){
+                //     //post without image
+                //     uploadData(description);
+                // }else{
+                //     uploadData(description, String.valueOf(image_rui));
+                // }
             }
         });
     }
 
-    private void uploadData( final String description, String uri    ) {
+    private void uploadData( final String description) {
         pd.setMessage("Publishing post...");
         pd.show();
 
@@ -195,14 +204,18 @@ public class AddPostAct extends AppCompatActivity {
 
         String filePathAndName = "Posts/" + "post_" + timeStamp;
 
-        if (!uri.equals("noImage")){
+        if (compressedImage != null){
             //post with image
             StorageReference ref = FirebaseStorage.getInstance().getReference().child(filePathAndName);
-            ref.putFile(Uri.parse(uri))
+            ref.putBytes(compressedImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             //image success upload
+
+                            compressedImage = null;
+
+                            
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uriTask.isSuccessful());
 
@@ -547,21 +560,8 @@ public class AddPostAct extends AppCompatActivity {
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-            byte[] imgbyte = byteArrayOutputStream.toByteArray();
-            Log.d(TAG, "cek: " + imgbyte.length);
-
-            ByteArrayOutputStream byteArrayOutputStream1 = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream1);
-            byte[] imgbyte1 = byteArrayOutputStream1.toByteArray();
-            Log.d(TAG, "cek: " + imgbyte1.length);
-
-            Bitmap bitmap2 = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-            ByteArrayOutputStream byteArrayOutputStream2 = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream2);
-            byte[] imgbyte2 = byteArrayOutputStream2.toByteArray();
-            Log.d(TAG, "cek: " + imgbyte2.length);
-
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream);
+            compressedImage =byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
             e.printStackTrace();
         }
