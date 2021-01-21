@@ -551,9 +551,6 @@ public class AddPostAct extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     } */
 
-
-
-
     private void cek(Uri uri) {
         //imageView.setImageURI(uri);
 

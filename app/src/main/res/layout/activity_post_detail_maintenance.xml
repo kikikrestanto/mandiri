@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activites.PostDetailMaintenanceAct">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameUserDetail"
+                android:text="Region III"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/nameLinearDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameTextViewDetail"
+                    android:text="Name : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/jenisTextViewDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AC"
+                    android:textIsSelectable="false"/>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/moreBtnMainDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nameLinear"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="end"
+                android:layout_marginStart="274dp"
+                android:layout_marginLeft="274dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:layout_toEndOf="@+id/nameLinearDetail"
+                android:layout_toRightOf="@+id/nameLinearDetail"
+                android:background="@null"
+                android:src="@drawable/ic_more_black_24dp" />
+            />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/merkLinearDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/merkTextDetail"
+                android:text="Merk / Type :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/merkViewDetail"
+                android:text="Panasonic / Casette / CU PV 24RB4P"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lokasiLinearDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lokasiTextDetail"
+                android:text="Lokasi :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/lokasiViewDetail"
+                android:text="G.A Bpk Dicky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inventarisLinearDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/inventarisTextDetail"
+                android:text="No inventaris : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/inventarisViewDetail"
+                android:text="2.5 PK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TableLayout
+        android:stretchColumns="1,2,3,4"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow>
+            <TextView
+                android:text="No"
+                android:textSize="12dp"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:gravity="center"
+                />
+            <TextView
+                android:text="Tanggal"
+                android:textSize="12dp"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:gravity="center"
+                />
+            <TextView
+                android:text="Tindakan"
+                android:textSize="12dp"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:gravity="center"
+                />
+            <TextView
+                android:text="Keterangan"
+                android:textSize="12dp"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:gravity="center"
+                />
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </TableLayout>
+
+</LinearLayout>

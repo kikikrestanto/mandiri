@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1,2,3,4"
+    android:layout_margin="8dp">
+
+    <TableRow>
+        <TextView
+            android:id="@+id/nomorTextView"
+            android:text="No"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/tanggalTextView"
+            android:text="Tanggal"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/tindakanTextView"
+            android:text="Tindakan"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/keteranganTextView"
+            android:text="Keterangan"
+            android:textSize="12dp"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:gravity="center"
+            />
+    </TableRow>
+
+
+
+
+</TableLayout>
