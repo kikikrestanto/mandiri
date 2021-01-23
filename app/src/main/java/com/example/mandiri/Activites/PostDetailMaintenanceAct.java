@@ -91,27 +91,48 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
         recycleViewDetail.setLayoutManager(layoutManager);
 
         modelUpdateMaintenanceList = new ArrayList<>();
+
+        // OFFLINE MANUAL TEST
+        for (int i = 0; i < 10; i++) {
+            ModelUpdateMaintenance model = new ModelUpdateMaintenance(
+                    "UID",
+                    "test@gmail.com",
+                    "Test",
+                    "View",
+                    Long.getLong("123"),
+                    "Tindakan",
+                    "Keterangan"
+
+            );
+            modelUpdateMaintenanceList.add(model);
+        }
+
+        //setup adapter
+        adapterUpdated = new AdapterUpdated(getApplicationContext(), modelUpdateMaintenanceList);
+        //set adapter
+        recycleViewDetail.setAdapter(adapterUpdated);
+
         //path database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PostMaintenance").child(postId).child("Updated");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                modelUpdateMaintenanceList.clear();
-                for (DataSnapshot ds : snapshot.getChildren()){
-                    ModelUpdateMaintenance modelUpdateMaintenance = ds.getValue(ModelUpdateMaintenance.class);
-                    modelUpdateMaintenanceList.add(modelUpdateMaintenance);
-
-                }
-
-                //setup adapter
-                adapterUpdated = new AdapterUpdated(getApplicationContext(),modelUpdateMaintenanceList);
-                //set adapter
-                recycleViewDetail.setAdapter(adapterUpdated);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PostMaintenance").child(postId).child("Updated");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                modelUpdateMaintenanceList.clear();
+//                for (DataSnapshot ds : snapshot.getChildren()){
+//                    ModelUpdateMaintenance modelUpdateMaintenance = ds.getValue(ModelUpdateMaintenance.class);
+//                    modelUpdateMaintenanceList.add(modelUpdateMaintenance);
+//
+//                }
+//
+//                //setup adapter
+//                adapterUpdated = new AdapterUpdated(getApplicationContext(),modelUpdateMaintenanceList);
+//                //set adapter
+//                recycleViewDetail.setAdapter(adapterUpdated);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
     }
 
     private void loadUserInfo() {
