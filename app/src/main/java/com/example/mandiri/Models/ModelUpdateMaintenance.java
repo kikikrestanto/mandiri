@@ -2,24 +2,20 @@ package com.example.mandiri.Models;
 
 public class ModelUpdateMaintenance {
 
-    String uid, pId, uName, noText, noView, tanggalText, tindakanText, tindakanView, ketText, ketView;
+    String uid, uName,uEmail, noView,tindakanView, keteranganView;
     Long tanggalView;
 
     public ModelUpdateMaintenance() {
     }
 
-    public ModelUpdateMaintenance(String uid, String pId, String uName, String noText, String noView, String tanggalText, String tindakanText, String tindakanView, String ketText, String ketView, Long tanggalView) {
+    public ModelUpdateMaintenance(String uid,String uEmail,String uName, String noView, Long tanggalView, String tindakanView, String keteranganView) {
         this.uid = uid;
-        this.pId = pId;
+        this.uEmail = uEmail;
         this.uName = uName;
-        this.noText = noText;
         this.noView = noView;
-        this.tanggalText = tanggalText;
-        this.tindakanText = tindakanText;
-        this.tindakanView = tindakanView;
-        this.ketText = ketText;
-        this.ketView = ketView;
         this.tanggalView = tanggalView;
+        this.tindakanView = tindakanView;
+        this.keteranganView = keteranganView;
     }
 
     public String getUid() {
@@ -30,12 +26,12 @@ public class ModelUpdateMaintenance {
         this.uid = uid;
     }
 
-    public String getpId() {
-        return pId;
+    public String getuEmail() {
+        return uEmail;
     }
 
-    public void setpId(String pId) {
-        this.pId = pId;
+    public void setuEmail(String uEmail) {
+        this.uEmail = uEmail;
     }
 
     public String getuName() {
@@ -46,14 +42,6 @@ public class ModelUpdateMaintenance {
         this.uName = uName;
     }
 
-    public String getNoText() {
-        return noText;
-    }
-
-    public void setNoText(String noText) {
-        this.noText = noText;
-    }
-
     public String getNoView() {
         return noView;
     }
@@ -62,20 +50,12 @@ public class ModelUpdateMaintenance {
         this.noView = noView;
     }
 
-    public String getTanggalText() {
-        return tanggalText;
+    public Long getTanggalView() {
+        return tanggalView;
     }
 
-    public void setTanggalText(String tanggalText) {
-        this.tanggalText = tanggalText;
-    }
-
-    public String getTindakanText() {
-        return tindakanText;
-    }
-
-    public void setTindakanText(String tindakanText) {
-        this.tindakanText = tindakanText;
+    public void setTanggalView(Long tanggalView) {
+        this.tanggalView = tanggalView;
     }
 
     public String getTindakanView() {
@@ -86,27 +66,11 @@ public class ModelUpdateMaintenance {
         this.tindakanView = tindakanView;
     }
 
-    public String getKetText() {
-        return ketText;
+    public String getKeteranganView() {
+        return keteranganView;
     }
 
-    public void setKetText(String ketText) {
-        this.ketText = ketText;
-    }
-
-    public String getKetView() {
-        return ketView;
-    }
-
-    public void setKetView(String ketView) {
-        this.ketView = ketView;
-    }
-
-    public Long getTanggalView() {
-        return tanggalView;
-    }
-
-    public void setTanggalView(Long tanggalView) {
-        this.tanggalView = tanggalView;
+    public void setKeteranganView(String keteranganView) {
+        this.keteranganView = keteranganView;
     }
 }

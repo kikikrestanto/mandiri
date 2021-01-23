@@ -10,7 +10,6 @@
     <TableRow>
         <TextView
             android:id="@+id/nomorTextView"
-            android:text="No"
             android:textSize="12dp"
             android:padding="10dp"
             android:layout_column="1"
@@ -18,7 +17,6 @@
             />
         <TextView
             android:id="@+id/tanggalTextView"
-            android:text="Tanggal"
             android:textSize="12dp"
             android:padding="10dp"
             android:layout_column="1"
@@ -26,7 +24,6 @@
             />
         <TextView
             android:id="@+id/tindakanTextView"
-            android:text="Tindakan"
             android:textSize="12dp"
             android:padding="10dp"
             android:layout_column="1"
@@ -34,15 +31,11 @@
             />
         <TextView
             android:id="@+id/keteranganTextView"
-            android:text="Keterangan"
             android:textSize="12dp"
             android:padding="10dp"
             android:layout_column="1"
             android:gravity="center"
             />
     </TableRow>
-
-
-
 
 </TableLayout>

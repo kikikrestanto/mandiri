@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="1dp"
+    app:contentPadding="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/avatarCv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd    ="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/no_avatar"/>
+        <TextView
+            android:id="@+id/nameCv"
+            android:layout_toRightOf="@+id/avatarCv"
+            android:text="Sobar"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/commentCv"
+            android:layout_below="@+id/nameCv"
+            android:layout_toEndOf="@id/avatarCv"
+            android:layout_toRightOf="@id/avatarCv"
+            android:text="This is actual commment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/timeCv"
+            android:text="12/06/2020"
+            android:layout_below="@id/commentCv"
+            android:layout_toEndOf="@id/avatarCv"
+            android:layout_toRightOf="@id/avatarCv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

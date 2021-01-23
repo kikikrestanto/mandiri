@@ -3,6 +3,8 @@ package com.example.mandiri.Activites;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,6 +17,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mandiri.Adapters.AdapterUpdated;
+import com.example.mandiri.Models.ModelUpdateMaintenance;
 import com.example.mandiri.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,15 +29,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PostDetailMaintenanceAct extends AppCompatActivity {
 
     String email,myUid,uid,pId
-            ,name, myName, postIdMaintenance,postid;
+            ,name, myName, postIdMaintenance,postId;
 
     TextView nameUserDetail,nameTextViewDetail, jenisTextViewDetail,
             merkTextDetail,merkViewDetail,lokasiTextDetail,lokasiViewDetail,inventarisTextDetail,
             inventarisViewDetail;
     ImageButton moreBtnMainDetail;
+
+    List<ModelUpdateMaintenance> modelUpdateMaintenanceList;
+    RecyclerView recycleViewDetail;
+    AdapterUpdated adapterUpdated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +52,10 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
         setContentView(R.layout.activity_post_detail_maintenance);
 
         Intent intent = getIntent();
-        postid = intent.getStringExtra("postId");
+        postId = intent.getStringExtra("postId");
 
+        /*Intent intent1 = getIntent();
+        pId = intent1.getStringExtra("postId");*/
 
         nameUserDetail = findViewById(R.id.nameUserDetail);
         nameTextViewDetail = findViewById(R.id.nameTextViewDetail);
@@ -54,16 +67,49 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
         inventarisTextDetail = findViewById(R.id.inventarisTextDetail);
         inventarisViewDetail = findViewById(R.id.inventarisViewDetail);
 
+        recycleViewDetail = findViewById(R.id.recycleViewDetail);
+
         loadPostInfo();
-
+        loadMaintenance();
         checkUserStatus();
-
         loadUserInfo();
 
         moreBtnMainDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showMoreOptions();
+            }
+        });
+    }
+
+    private void loadMaintenance() {
+        Intent intent1= getIntent();
+        pId = intent1.getStringExtra("postId");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+
+        recycleViewDetail.setLayoutManager(layoutManager);
+
+        modelUpdateMaintenanceList = new ArrayList<>();
+        //path database
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PostMaintenance").child(postId).child("Updated");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                modelUpdateMaintenanceList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    ModelUpdateMaintenance modelUpdateMaintenance = ds.getValue(ModelUpdateMaintenance.class);
+                    modelUpdateMaintenanceList.add(modelUpdateMaintenance);
+
+                }
+
+                //setup adapter
+                adapterUpdated = new AdapterUpdated(getApplicationContext(),modelUpdateMaintenanceList);
+                //set adapter
+                recycleViewDetail.setAdapter(adapterUpdated);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
@@ -106,7 +152,7 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == 0){
                     Intent intent = new Intent(PostDetailMaintenanceAct.this, UpdateDateAct.class);
-                    intent.putExtra("postId",pId);
+                    intent.putExtra("postId",postId);
                     startActivity(intent);
                 } else if (id == 1){
                     beginDelete();
@@ -155,7 +201,7 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
         //get post using the id of the post
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PostMaintenance");
 
-        Query query = reference.orderByChild("pId").equalTo(postid);
+        Query query = reference.orderByChild("pId").equalTo(postId);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -169,14 +215,12 @@ public class PostDetailMaintenanceAct extends AppCompatActivity {
                 String merk = ""+ds.child("merkEdit").getValue();
                 String lokasi = ""+ds.child("lokasiEdit").getValue();
                 String inventaris = ""+ds.child("inventarisEdit").getValue();
-
                 //set data
                 nameUserDetail.setText(name);
                 jenisTextViewDetail.setText(jenis);
                 merkViewDetail.setText(merk);
                 lokasiViewDetail.setText(lokasi);
                 inventarisViewDetail.setText(inventaris);
-
             }
             }
 

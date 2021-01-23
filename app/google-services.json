@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "368354587442",
+    "firebase_url": "https://mandiri-d42cd-default-rtdb.firebaseio.com",
+    "project_id": "mandiri-d42cd",
+    "storage_bucket": "mandiri-d42cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368354587442:android:bfd5a8515985e857269d2b",
+        "android_client_info": {
+          "package_name": "com.example.mandiri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368354587442-madqp0u5f1njgi3u870lsm1ni3pgjlak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mandiri",
+            "certificate_hash": "55e02317ea96e2bd4d034d9fa3e0029bb138490b"
+          }
+        },
+        {
+          "client_id": "368354587442-bsquub4hl440106c7js59e45dekvjb3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmGPdtLv3RWAmZMjQlHqEYlGOXcfgnNts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368354587442-bsquub4hl440106c7js59e45dekvjb3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

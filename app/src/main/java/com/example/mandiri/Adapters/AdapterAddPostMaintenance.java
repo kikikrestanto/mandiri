@@ -35,7 +35,7 @@ public class AdapterAddPostMaintenance extends RecyclerView.Adapter<AdapterAddPo
     Context context;
     List<ModelAddMaintenance> addPost;
 
-    String myUid,pId, uid, postIdMaintenance;
+    String myUid;
 
     public AdapterAddPostMaintenance(Context context, List<ModelAddMaintenance> addPost){
         this.context = context;

@@ -69,7 +69,6 @@ public class UpdateDateAct extends AppCompatActivity {
 
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
-        Toast.makeText(this,postId, Toast.LENGTH_SHORT).show();
 
         checkUserStatus();
 
@@ -97,6 +96,9 @@ public class UpdateDateAct extends AppCompatActivity {
                     Toast.makeText(UpdateDateAct.this, "Enter Information ....", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Intent intent1 = new Intent(UpdateDateAct.this, PostDetailMaintenanceAct.class);
+                intent1.putExtra("postId", pId);
+                startActivity(intent1);
 
                 updateData(nomor, tanggal, tindakan, keterangan);
             }
