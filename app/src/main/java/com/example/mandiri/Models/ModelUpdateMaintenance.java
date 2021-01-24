@@ -1,29 +1,51 @@
 package com.example.mandiri.Models;
 
 public class ModelUpdateMaintenance {
-
-    String uid, uName,uEmail, noView,tindakanView, keteranganView;
-    Long tanggalView;
+    String keterangan, nomor, tanggal, tindakan, uEmail, uid;
 
     public ModelUpdateMaintenance() {
+        // Empty constructor
     }
 
-    public ModelUpdateMaintenance(String uid,String uEmail,String uName, String noView, Long tanggalView, String tindakanView, String keteranganView) {
-        this.uid = uid;
+    public ModelUpdateMaintenance(String keterangan, String nomor, String tanggal, String tindakan, String uEmail, String uid) {
+        this.keterangan = keterangan;
+        this.nomor = nomor;
+        this.tanggal = tanggal;
+        this.tindakan = tindakan;
         this.uEmail = uEmail;
-        this.uName = uName;
-        this.noView = noView;
-        this.tanggalView = tanggalView;
-        this.tindakanView = tindakanView;
-        this.keteranganView = keteranganView;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
+
+    public String getNomor() {
+        return nomor;
+    }
+
+    public void setNomor(String nomor) {
+        this.nomor = nomor;
+    }
+
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
+    }
+
+    public String getTindakan() {
+        return tindakan;
+    }
+
+    public void setTindakan(String tindakan) {
+        this.tindakan = tindakan;
     }
 
     public String getuEmail() {
@@ -34,43 +56,11 @@ public class ModelUpdateMaintenance {
         this.uEmail = uEmail;
     }
 
-    public String getuName() {
-        return uName;
+    public String getUid() {
+        return uid;
     }
 
-    public void setuName(String uName) {
-        this.uName = uName;
-    }
-
-    public String getNoView() {
-        return noView;
-    }
-
-    public void setNoView(String noView) {
-        this.noView = noView;
-    }
-
-    public Long getTanggalView() {
-        return tanggalView;
-    }
-
-    public void setTanggalView(Long tanggalView) {
-        this.tanggalView = tanggalView;
-    }
-
-    public String getTindakanView() {
-        return tindakanView;
-    }
-
-    public void setTindakanView(String tindakanView) {
-        this.tindakanView = tindakanView;
-    }
-
-    public String getKeteranganView() {
-        return keteranganView;
-    }
-
-    public void setKeteranganView(String keteranganView) {
-        this.keteranganView = keteranganView;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

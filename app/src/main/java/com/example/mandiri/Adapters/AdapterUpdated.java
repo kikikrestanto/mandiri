@@ -41,21 +41,16 @@ public class AdapterUpdated extends RecyclerView.Adapter<AdapterUpdated.MyHolder
         //get the data
         final String uid = updateList.get(i).getUid();
         String uEmail = updateList.get(i).getuEmail();
-        final String noText = updateList.get(i).getNoView();
-        Long tanggal = updateList.get(i).getTanggalView();
-        final String keterangan = updateList.get(i).getTindakanView();
-        final String tindakan = updateList.get(i).getKeteranganView();
-
-        String tgl = String.valueOf(tanggal);
-        String no = String.valueOf(noText);
-        String tin = String.valueOf(tindakan);
-        String ket = String.valueOf(keterangan);
+        final String noText = updateList.get(i).getNomor();
+        String tanggal = updateList.get(i).getTanggal();
+        final String keterangan = updateList.get(i).getKeterangan();
+        final String tindakan = updateList.get(i).getTindakan();
 
         //set data
-        holder.nomorTextView.setText(no);
-        holder.tanggalTextView.setText(tgl);
-        holder.tindakanTextView.setText(tin);
-        holder.keteranganTextView.setText(ket);
+        holder.nomorTextView.setText(noText);
+        holder.tanggalTextView.setText(tanggal);
+        holder.tindakanTextView.setText(tindakan);
+        holder.keteranganTextView.setText(keterangan);
     }
 
     @Override
